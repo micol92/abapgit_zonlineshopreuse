@@ -1,0 +1,4 @@
+define service ZUI_PREPACKAGEDITEMSOLS {
+  expose ZC_PREPACKAGEDITEMSOLS_S as PrePackagedItemsAll;
+  expose ZC_PREPACKAGEDITEMS as PrePackagedItems;
+}

@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZC_PrePackagedItems {
+  grant select on ZC_PrePackagedItems
+  where INHERITING CONDITIONS FROM ENTITY ZI_PrePackagedItems;
+}

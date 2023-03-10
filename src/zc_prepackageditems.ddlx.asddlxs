@@ -1,0 +1,145 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Pre-Packaged Items', 
+    typeNamePlural: 'Pre-Packaged Items', 
+    title: {
+      type: #STANDARD, 
+      label: 'Pre packaged items for online shop', 
+      value: 'Pkgid'
+    }
+  }
+}
+annotate view ZC_PrePackagedItems with
+{
+  @UI.identification: [ {
+    position: 1 , 
+    label: 'Pkgid'
+  } ]
+  @UI.lineItem: [ {
+    position: 1 , 
+    label: 'Pkgid'
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_PrePackagedItems', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Pre packaged items for online shop', 
+    position: 1 
+  } ]
+  @EndUserText.label: 'Package ID'
+  Pkgid;
+  
+  @UI.identification: [ {
+    position: 2 , 
+    label: 'Package name'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 , 
+    label: 'Package name'
+  } ]
+  PackageName;
+  
+  @UI.identification: [ {
+    position: 3 , 
+    label: 'Package description'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 , 
+    label: 'Package description'
+  } ]
+  PackageDescription;
+  
+  @UI.identification: [ {
+    position: 4 ,
+    label: 'Plant'
+  } ]
+  @UI.lineItem: [ {
+    position: 4 ,
+    label: 'Plant'
+  } ]
+  Plant;
+  
+  @UI.identification: [ {
+    position: 5 ,  
+    label: 'Purchase Requisition Item Text'
+  } ]
+  @UI.lineItem: [ {
+    position: 5 , 
+    label: 'Purchase Requisition Item Text'
+  } ]
+  PurchaseRequisitionItemText;
+  
+  @UI.identification: [ {
+    position: 6 , 
+    label: 'Account Assignment Category'
+  } ]
+  @UI.lineItem: [ {
+    position: 6 , 
+    label: 'Account Assignment Category'
+  } ]
+  AccountAssignmentCategory;
+  
+  @UI.identification: [ {
+    position: 7 , 
+    label: 'Requested Quantity'
+  } ]
+  @UI.lineItem: [ {
+    position: 7 , 
+    label: 'Requested Quantity'
+  } ]
+  RequestedQuantity;
+  
+  @Consumption.valueHelpDefinition: [ {
+    entity: {
+      name: 'I_UnitOfMeasure', 
+      element: 'UnitOfMeasure'
+    }
+  } ]
+  
+  BaseUnit;
+  
+  @UI.identification: [ {
+    position: 8 , 
+    label: 'Purchase Requisition Price'
+  } ]
+  @UI.lineItem: [ {
+    position: 8 , 
+    label: 'Purchase Requisition Price'
+  } ]
+  PurchaseRequisitionPrice;
+  
+  @Consumption.valueHelpDefinition: [ {
+    entity: {
+      name: 'I_Currency', 
+      element: 'Currency'
+    }
+  } ]
+  PurReqnItemCurrency;
+  
+  @UI.identification: [ {
+    position: 9 , 
+    label: 'Material Group'
+  } ]
+  @UI.lineItem: [ {
+    position: 9 , 
+    label: 'Material Group'
+  } ]
+  MaterialGroup;
+  
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Purchasing Group'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'Purchasing Group'
+  } ]
+  PurchasingGroup;
+  
+  @UI.identification: [ {
+    position: 11 , 
+    label: 'Purchasing Organization'
+  } ]
+  PurchasingOrganization;
+}

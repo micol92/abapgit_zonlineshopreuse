@@ -1,0 +1,69 @@
+managed with additional save implementation in class ZBP_I_PREPACKAGEDITEMSOLS_S unique;
+strict;
+with draft;
+
+define behavior for ZI_PrePackagedItemsOls_S alias PrePackagedItemsAll
+draft table ZOS_PREPITEM_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _PrePackagedItems { create ( features : instance ); with draft; }
+}
+
+define behavior for ZI_PrePackagedItems alias PrePackagedItems
+persistent table ZOS_PREPITEM
+draft table ZOS_PREPITEM_D
+etag master Locallastchangedat
+lock dependent by _PrePackagedItemsAll
+authorization dependent by _PrePackagedItemsAll
+
+{
+  field ( mandatory : create )
+   Pkgid;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   Pkgid;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZOS_PREPITEM
+  {
+    Pkgid = PKGID;
+    PackageName = PKGNAME;
+    PackageDescription = PKGDESCR;
+    Plant = WERKS;
+    PurchaseRequisitionItemText = TXZ01;
+    AccountAssignmentCategory = KNTTP;
+    RequestedQuantity = MENGE;
+    BaseUnit = MEINS;
+    PurchaseRequisitionPrice = PREIS;
+    PurReqnItemCurrency = WAERS;
+    MaterialGroup = MATKL;
+    PurchasingGroup = EKGRP;
+    PurchasingOrganization = EKORG;
+    Locallastchangedat = LOCALLASTCHANGEDAT;
+    Changedat = CHANGEDAT;
+  }
+
+  association _PrePackagedItemsAll { with draft; }
+
+  validation ValidateRecordChanges on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

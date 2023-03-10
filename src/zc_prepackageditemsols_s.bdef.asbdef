@@ -1,0 +1,25 @@
+projection;
+strict;
+use draft;
+
+define behavior for ZC_PrePackagedItemsOls_S alias PrePackagedItemsAll
+
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _PrePackagedItems { create; with draft; }
+}
+
+define behavior for ZC_PrePackagedItems alias PrePackagedItems
+
+{
+  use update;
+  use delete;
+
+  use association _PrePackagedItemsAll { with draft; }
+}
